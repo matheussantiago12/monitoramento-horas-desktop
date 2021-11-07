@@ -1,26 +1,44 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "Win32_API/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Win32_API.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Win32_API.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Win32_API/1.0.0": {
+      "type": "project",
+      "path": "../Win32_API/Win32_API.csproj",
+      "msbuildProject": "../Win32_API/Win32_API.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "Win32_API >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\adria\\.nuget\\packages\\": {}
+    "C:\\Users\\Gustavo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\adria\\Documents\\Projetos\\Trabalhos SENAI\\4º Semestre\\Projeto Integrador\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj",
+      "projectUniqueName": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj",
       "projectName": "MonitoramentoHoras",
-      "projectPath": "C:\\Users\\adria\\Documents\\Projetos\\Trabalhos SENAI\\4º Semestre\\Projeto Integrador\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj",
-      "packagesPath": "C:\\Users\\adria\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\adria\\Documents\\Projetos\\Trabalhos SENAI\\4º Semestre\\Projeto Integrador\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\obj\\",
+      "projectPath": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj",
+      "packagesPath": "C:\\Users\\Gustavo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\adria\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gustavo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -32,7 +50,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj": {
+              "projectPath": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -43,6 +66,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -61,7 +85,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

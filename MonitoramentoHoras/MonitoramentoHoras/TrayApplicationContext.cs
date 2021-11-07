@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Win32_API;
 
 namespace MonitoramentoHoras
 {
@@ -24,6 +25,7 @@ namespace MonitoramentoHoras
 
         void ShowMessage(object sender, EventArgs e)
         {
+            Win32.GetIdleTime();
             MessageBox.Show("Mensagem de duplo clique");
         }
 
