@@ -10,7 +10,7 @@ namespace MonitoramentoHoras
         [STAThread]
         public static void Main()
         {
-            Application.Run(new Login());
+            Application.Run(new TrayApplicationContext());
         }
 
         public static void SetToken(string token)

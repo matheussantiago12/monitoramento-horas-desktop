@@ -13,6 +13,7 @@ namespace MonitoramentoHoras
 {
     public class TrayApplicationContext : ApplicationContext
     {
+        private Login _formLogin;
         NotifyIcon notifyIcon = new NotifyIcon();
         bool pontoAtivo = false;
         private static System.Timers.Timer timer;
@@ -21,6 +22,8 @@ namespace MonitoramentoHoras
 
         public TrayApplicationContext()
         {
+            _formLogin = new Login();
+            _formLogin.Show();
             ToolStripMenuItem iniciarMenuItem = new ToolStripMenuItem("Iniciar ponto", null, new EventHandler(IniciarPonto));
             ToolStripMenuItem sairMenuItem = new ToolStripMenuItem("Sair", null, new EventHandler(Sair));
 
