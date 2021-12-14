@@ -42,6 +42,7 @@ namespace MonitoramentoHoras
                 Program.SetToken(tokenDto.Token);
                 mensagemErro.Visible = false;
                 Hide();
+                MessageBox.Show("Logado com sucesso!");
                 ToolStripMenuItem iniciarMenuItem = new ToolStripMenuItem("Iniciar ponto", null, new EventHandler(IniciarPonto));
                 ToolStripMenuItem sairMenuItem = new ToolStripMenuItem("Sair", null, new EventHandler(Sair));
 
@@ -67,32 +68,35 @@ namespace MonitoramentoHoras
 
         void EnviarIdleTime(object sender, EventArgs e)
         {
-            var idleTime = Win32.GetIdleTime();
-            if (idleTime >= 1000)
+            if (pontoAtivo)
             {
-                if (!inicioAusencia.HasValue)
+                var idleTime = Win32.GetIdleTime();
+                if (idleTime >= 1000)
                 {
-                    inicioAusencia = DateTime.Now.AddMinutes(-5);
-                }
-            }
-            else
-            {
-                if (inicioAusencia.HasValue)
-                {
-                    var values = new Dictionary<string, string>
+                    if (!inicioAusencia.HasValue)
                     {
-                        { "tempoInicialOciosidade", inicioAusencia.ToString() },
-                        { "tempoFinalOciosidade", DateTime.Now.ToString() },
-                        { "pessoaId", "1" }
-                    };
+                        inicioAusencia = DateTime.Now.AddMinutes(-5);
+                    }
+                }
+                else
+                {
+                    if (inicioAusencia.HasValue)
+                    {
+                        var values = new Dictionary<string, string>
+                        {
+                            { "tempoInicialOciosidade", inicioAusencia.ToString() },
+                            { "tempoFinalOciosidade", DateTime.Now.ToString() },
+                            { "pessoaId", "1" }
+                        };
 
-                    var content = new FormUrlEncodedContent(values);
+                        var content = new FormUrlEncodedContent(values);
 
-                    var response = client.PostAsync("https://backend-monitoramento-horas.herokuapp.com/api/rastreamento", content).Result;
+                        var response = client.PostAsync("https://backend-monitoramento-horas.herokuapp.com/api/rastreamento", content).Result;
 
-                    var responseString = response.Content.ReadAsStringAsync();
+                        var responseString = response.Content.ReadAsStringAsync();
 
-                    inicioAusencia = null;
+                        inicioAusencia = null;
+                    }
                 }
             }
         }
@@ -110,6 +114,7 @@ namespace MonitoramentoHoras
             {
                 pontoAtivo = true;
                 notifyIcon.ContextMenuStrip.Items.RemoveAt(0);
+                MessageBox.Show("Ponto Iniciado!");
 
                 ToolStripMenuItem finalizarMenuItem = new ToolStripMenuItem("Finalizar ponto", null, new EventHandler(FinalizarPonto));
 
@@ -127,6 +132,7 @@ namespace MonitoramentoHoras
             {
                 pontoAtivo = false;
                 notifyIcon.ContextMenuStrip.Items.RemoveAt(0);
+                MessageBox.Show("Ponto Finalizado!");
 
                 ToolStripMenuItem iniciarMenuItem = new ToolStripMenuItem("Iniciar ponto", null, new EventHandler(IniciarPonto));
 
