@@ -56,7 +56,7 @@ namespace MonitoramentoHoras
                     {
                         { "tempoInicialOciosidade", inicioAusencia.ToString() },
                         { "tempoFinalOciosidade", DateTime.Now.ToString() },
-                        { "pessoa", "0" }
+                        { "pessoaId", "1" }
                     };
 
                     var content = new FormUrlEncodedContent(values);
