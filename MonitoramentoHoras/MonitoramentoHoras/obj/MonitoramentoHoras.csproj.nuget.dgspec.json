@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj": {}
+    "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj": {
+    "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj",
+        "projectUniqueName": "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj",
         "projectName": "MonitoramentoHoras",
-        "projectPath": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj",
-        "packagesPath": "C:\\Users\\Gustavo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\obj\\",
+        "projectPath": "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\MonitoramentoHoras.csproj",
+        "packagesPath": "C:\\Users\\maria\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\MonitoramentoHoras\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gustavo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maria\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj": {
-                "projectPath": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj"
+              "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj": {
+                "projectPath": "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj"
               }
             }
           }
@@ -43,6 +43,16 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "MaterialSkin": {
+              "target": "Package",
+              "version": "[0.2.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,15 +71,15 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj": {
+    "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj",
+        "projectUniqueName": "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj",
         "projectName": "Win32_API",
-        "projectPath": "C:\\Users\\Gustavo\\Desktop\\Projeto\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj"
+        "projectPath": "C:\\Users\\maria\\OneDrive\\Área de Trabalho\\vitor - não excluir\\monitoramento-horas-desktop\\MonitoramentoHoras\\Win32_API\\Win32_API.csproj"
       },
       "frameworks": {
         "net40": {}
