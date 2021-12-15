@@ -1,7 +1,6 @@
 ﻿using MonitoramentoHoras.Dtos;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Net.Http;
@@ -16,7 +15,43 @@ namespace MonitoramentoHoras
     {
         public Login()
         {
+            CenterToScreen();
             InitializeComponent();
+            txtUsuario.GotFocus += new EventHandler(RemoveTextTxtUsuario);
+            txtUsuario.LostFocus += new EventHandler(AddTextTxtUsuario);
+
+            txtSenha.GotFocus += new EventHandler(RemoveTextTxtSenha);
+            txtSenha.LostFocus += new EventHandler(AddTexttxtSenha);
+            MaximizeBox = false;
+            MinimizeBox = false;
+        }
+
+        public void RemoveTextTxtUsuario(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text == "Digite o usuário")
+            {
+                txtUsuario.Text = "";
+            }
+        }
+
+        public void AddTextTxtUsuario(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+                txtUsuario.Text = "Digite o usuário";
+        }
+
+        public void RemoveTextTxtSenha(object sender, EventArgs e)
+        {
+            if (txtSenha.Text == "******")
+            {
+                txtSenha.Text = "";
+            }
+        }
+
+        public void AddTexttxtSenha(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSenha.Text))
+                txtSenha.Text = "******";
         }
 
         NotifyIcon notifyIcon = new NotifyIcon();
@@ -24,6 +59,7 @@ namespace MonitoramentoHoras
         private static System.Timers.Timer timer;
         private DateTime? inicioAusencia = null;
         private static readonly HttpClient client = new HttpClient();
+        
 
         private async void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -39,11 +75,20 @@ namespace MonitoramentoHoras
             if (result.Contains("token"))
             {
                 TokenDto tokenDto = JsonConvert.DeserializeObject<TokenDto>(result);
-                PopularInformaçõesDoUsuario(tokenDto.Token);
-                mensagemErro.Visible = false;
+                PopularInformacoesDoUsuario(tokenDto.Token);
                 Hide();
+                mensagemErro.Visible = false;
 
-                MessageBox.Show("Logado com sucesso!");
+                //if (Program.UsuarioLogadoDto.mudarSenha)
+                //{
+                    new Senha().Show();
+                     MessageBox.Show("Foi detectado que você está com uma senha auto gerada! Favor trocar sua senha.");
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Logado com sucesso!");
+                //}
+
                 ToolStripMenuItem iniciarMenuItem = new ToolStripMenuItem("Iniciar ponto", null, new EventHandler(IniciarPonto));
                 ToolStripMenuItem sairMenuItem = new ToolStripMenuItem("Sair", null, new EventHandler(Sair));
 
@@ -64,20 +109,14 @@ namespace MonitoramentoHoras
             {
                 mensagemErro.Visible = true;
             }
-
         }
 
-        void PopularInformaçõesDoUsuario(string token)
+        void PopularInformacoesDoUsuario(string token)
         {
             Program.SetToken(token);
-            SetTokenClient();
+            Program.SetTokenClient(client);
             SetMinutosOciososConfigurado();
-            SetPessoaId();
-        }
-
-        void SetTokenClient()
-        {
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Program.Token);
+            SetPessoaIdEUsuarioId();
         }
 
         void SetMinutosOciososConfigurado()
@@ -89,7 +128,7 @@ namespace MonitoramentoHoras
             Program.SetTempoLimiteOciosidade(configDto.TempoLimiteOciosidade);
         }
 
-        void SetPessoaId()
+        void SetPessoaIdEUsuarioId()
         {
             var response = client.GetAsync("https://backend-monitoramento-horas.herokuapp.com/api/usuario/logado").Result;
 
@@ -98,7 +137,7 @@ namespace MonitoramentoHoras
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 UsuarioLogadoDto usuario = JsonConvert.DeserializeObject<UsuarioLogadoDto>(result);
-                Program.SetPessoaId(usuario.pessoaId);
+                Program.SetUsuarioLogadoDto(usuario);
             }
             else
             {
@@ -125,14 +164,12 @@ namespace MonitoramentoHoras
                         var inicioAusenciaString = inicioAusencia?.ToString("s");
                         var fimAusencia = DateTime.Now.ToString("s");
 
-                        InserirTempoOciosoDto inserirTempoOciosoDto = new InserirTempoOciosoDto(inicioAusenciaString, fimAusencia, Program.PessoaId);
+                        InserirTempoOciosoDto inserirTempoOciosoDto = new InserirTempoOciosoDto(inicioAusenciaString, fimAusencia, Program.UsuarioLogadoDto.pessoaId);
 
                         var json = JsonConvert.SerializeObject(inserirTempoOciosoDto);
                         var data = new StringContent(json, Encoding.UTF8, "application/json");
 
                         var response = client.PostAsync("https://backend-monitoramento-horas.herokuapp.com/api/rastreamento", data).Result;
-
-                        var responseString = response.Content.ReadAsStringAsync();
 
                         inicioAusencia = null;
                     }

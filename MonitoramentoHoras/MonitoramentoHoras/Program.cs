@@ -1,4 +1,6 @@
+using MonitoramentoHoras.Dtos;
 using System;
+using System.Net.Http;
 using System.Windows.Forms;
 
 namespace MonitoramentoHoras
@@ -7,8 +9,7 @@ namespace MonitoramentoHoras
     {
         public static string Token { get; set; }
         public static long TempoLimiteOciosidade { get; set; }
-
-        public static long PessoaId { get; set; }
+        public static UsuarioLogadoDto UsuarioLogadoDto { get; set; }
 
         [STAThread]
         public static void Main()
@@ -20,15 +21,20 @@ namespace MonitoramentoHoras
         {
             Token = token;
         }
-        
+
+        public static void SetTokenClient(HttpClient client)
+        {
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+        }
+
         public static void SetTempoLimiteOciosidade(long tempoLimiteOciosidade)
         {
             TempoLimiteOciosidade = tempoLimiteOciosidade;
         }
 
-        public static void SetPessoaId(long pessoaId)
+        public static void SetUsuarioLogadoDto(UsuarioLogadoDto usuarioLogadoDto)
         {
-            PessoaId = pessoaId;
+            UsuarioLogadoDto = usuarioLogadoDto;
         }
     }
 }

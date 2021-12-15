@@ -48,7 +48,7 @@ namespace MonitoramentoHoras
             this.txtUsuario.SelectionStart = 0;
             this.txtUsuario.Size = new System.Drawing.Size(286, 23);
             this.txtUsuario.TabIndex = 0;
-            this.txtUsuario.Text = "Usuário";
+            this.txtUsuario.Text = "Digite o usuário";
             this.txtUsuario.UseSystemPasswordChar = false;
             // 
             // txtSenha
@@ -64,7 +64,7 @@ namespace MonitoramentoHoras
             this.txtSenha.SelectionStart = 0;
             this.txtSenha.Size = new System.Drawing.Size(286, 23);
             this.txtSenha.TabIndex = 1;
-            this.txtSenha.Text = "Senha";
+            this.txtSenha.Text = "******";
             this.txtSenha.UseSystemPasswordChar = false;
             // 
             // buttonLogin

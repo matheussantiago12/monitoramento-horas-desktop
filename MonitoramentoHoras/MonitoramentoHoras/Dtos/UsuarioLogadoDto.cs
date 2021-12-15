@@ -7,5 +7,6 @@
         public int pessoaId { get; set; }
         public PessoaDto pessoa { get; set; }
         public int id { get; set; }
+        public bool mudarSenha { get; set; }
     }
 }
