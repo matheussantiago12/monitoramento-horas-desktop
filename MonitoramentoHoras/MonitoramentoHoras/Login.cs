@@ -55,7 +55,7 @@ namespace MonitoramentoHoras
                 notifyIcon.ContextMenuStrip.Items.Insert(1, sairMenuItem);
                 notifyIcon.Visible = true;
 
-                timer = new System.Timers.Timer(60000);
+                timer = new System.Timers.Timer(1000);
                 timer.Elapsed += new ElapsedEventHandler(EnviarIdleTime);
                 timer.Enabled = true;
             }
@@ -71,7 +71,7 @@ namespace MonitoramentoHoras
             if (pontoAtivo)
             {
                 var idleTime = Win32.GetIdleTime();
-                if (idleTime >= 1000)
+                if (idleTime >= 300000)
                 {
                     if (!inicioAusencia.HasValue)
                     {
